@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login</title>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+			font-family: sans-serif;
+			color: darkcyan;
+		}
+		a:hover{
+			text-decoration: underline;
+		}
+		header{
+			height: 150px;
+    		display: flex;
+    		justify-content: center;
+    		align-items: center;
+		}
+
+		#login-area{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin: auto;
+			width: 300px;
+			padding: 10px;
+			border-radius: 10px;
+			box-shadow: 5px 10px 20px 10px grey;
+			font-family: sans-serif;
+		}
+		#login-title{
+			font-family: monospace;
+			font-weight: bold;
+			font-size: 28px;
+			color: darkcyan;
+		}
+		#user-id{
+			padding: 15px;
+			width: 250px;
+			background: #f1f1f1;
+			border: 2px solid darkcyan;
+		}
+		#password{
+			margin-top: 25px;
+			padding: 15px;
+			width: 250px;
+			background-color: #f1f1f1;
+			border: 2px solid darkcyan;
+		}
+		input[type=text]:focus, input[type=password]:focus{
+  			background-color: #ddd;
+  			outline: none;
+		}
+		#bottom-login{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 300px;
+			margin-top: 25px;
+			margin-bottom: 15px;
+		}
+		#sign-in-btn{
+			padding: 11px;
+    		margin-right: 10px;
+    		background-color: darkcyan;
+    		color: aliceblue;
+    		border-radius: 50px;
+    		border: none;
+    		font-weight: bold;
+		}
+		#sign-in-btn:active{
+			background-color: cyan;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<center id="examiner">Conducted by EXAM-TANTRA</center>
+	</header>
+	<main>
+		<center id="login-area">
+			<h3 id="login-title" >Sign In</h3>
+			<input type="text" id="user-id" placeholder="Enter your user id" required>
+			<input type="password" id="password" placeholder="Enter your password" required>
+			<div id="bottom-login">
+				<a href="">Forgot password ?</a>
+				<button id="sign-in-btn" type="button" onclick="login()">Sign In</button>
+			</div>
+		</center>
+	</main>
+	<script type="text/javascript">
+		function isEmpty(username,password){
+			if (username && password) {
+				return false; 
+			}
+			return true;
+		}
+		async function validatePassword(username,password) {
+			const origin = document.location.origin;
+			const url = origin+'/api/user/'+username;
+			const response = await fetch(url);
+			if (response.ok) {
+				const result = await response.json();
+				if(result.password==password && result.username==username){
+					return true;
+				} 
+				return false;
+			}
+			else{
+				return false;
+			}
+		}
+		async function login() {
+			let username=document.getElementById('user-id').value;
+			let password = document.getElementById('password').value;
+			if (isEmpty(username,password)) {
+				alert("Please fill Username and Password")
+			} else if (validatePassword(username,password)) {
+				const response = await fetch(origin+'/api/login',{
+					method:'POST',
+					headers:{'Content-Type': 'application/json;charset=utf-8'},
+					body:JSON.stringify({
+						username:username
+					})
+				});
+				if (response.ok) {
+					const token = await response.text();
+					console.log(token);
+					localStorage.setItem('token',token);
+					document.location.href = origin+'/dashboard';
+				}
+			}else{
+				alert("Password does not match");
+			}
+		}
+	</script>
+</body>
+</html>

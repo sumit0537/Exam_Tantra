@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exam</title>
+    <!-- internal css -->
+    <link rel="stylesheet" href="../public/exam.css" />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="exam-body" class="hide">
+      <div class="header">
+        <div class="header-left">
+          <h2>Exam Details</h2>
+
+          <div class="exam_details">
+            <label>Exam Title : </label>
+            <span id="exam-title"></span>
+          </div>
+          <div class="exam_details">
+            <label>Exam Code : </label>
+            <span id="exam-code"></span>
+          </div>
+          <div class="exam_details">
+            <label>Duration : </label>
+            <span id="duration"></span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="exam_details">
+            <label>Status : </label>
+            <span id="exam-status">Pending</span>
+          </div>
+          <div class="exam_details">
+            <label id="exam-will-start-in-label"
+              >Your exam will start in :
+            </label>
+            <span id="exam-will-start-in">05 mins : 0 secs</span>
+          </div>
+        </div>
+      </div>
+      <!-- header ends here -->
+
+      <div class="main-content">
+        <div class="question-bar">
+          <p id="question-number"></p>
+        </div>
+        <div class="option-bar">
+          <ul class="option">
+            <li class="list-item">
+              <input id="A" type="radio" name="radio-option" value="A" />
+              <label for="#A" class="label-option" id="label-A"></label>
+            </li>
+            <li class="list-item">
+              <input id="B" type="radio" name="radio-option" value="B" /><label
+                for="#B"
+                class="label-option"
+                id="label-B"
+              >
+              </label>
+            </li>
+            <li class="list-item">
+              <input id="C" type="radio" name="radio-option" value="C" /><label
+                for="#C"
+                class="label-option"
+                id="label-C"
+              >
+              </label>
+            </li>
+            <li class="list-item">
+              <input id="D" type="radio" name="radio-option" value="D" /><label
+                for="#D"
+                class="label-option"
+                id="label-D"
+              >
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <footer class="button-bar">
+        <button type="button" id="prev-btn" onclick="Prev()">previous</button>
+        <button type="button" id="next-btn" onclick="Next()">next</button>
+        <button type="button" id="clear-btn" onclick="Clear()">clear</button>
+        <div class="space-bar"></div>
+        <button type="button" id="finish-btn" onclick="Finish()">finish</button>
+      </footer>
+    </div>
+    <div id="code-input-body">
+      <div id="code-input">
+        <h3>Enter exam code</h3>
+        <input
+          type="text"
+          id="code"
+          placeholder="Enter exam_code given to you "
+        />
+        <input
+          type="button"
+          id="submit-btn"
+          value="Submit"
+          onclick="SubmitCode()"
+        />
+      </div>
+    </div>
+    <!-- external java script -->
+    <script src="../public/exam.js" charset="utf-8"></script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+
+  <!-- external css -->
+  <link rel="stylesheet" href="../public/style.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-bar">
+      <div class="left">
+        <div class="logo">
+          <h2>Exam tantra</h2>
+        </div>
+      </div>
+      <div class="right">
+        <div class="name">
+          <h5 class="student-name" id="user-name">student name</h5>
+        </div>
+        <div class="logout">
+          <button type="button" class="logout-btn" onclick="logOut()">logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="dashboard">
+    <div class="dashboard-logo">
+      <h1 class="logo-text">Exam-Tantra</h1>
+    </div>
+    <div class="dashboard-btn">
+      <button type="button"  class="btn-conducting" onclick="getConductExam()">Conduct Exam</button>
+      <button type="button"  class="btn-exam" onclick="getExam()">Exam</a></button>
+      <button type="button"  class="btn-response" onclick="getResponse()">Response</a></button>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p id="copy-right-text">Copyright By Exam-Tantra</p>
+  </div>
+  <script type="text/javascript">
+    const origin = document.location.origin;
+    getUserName();
+    function logOut() {
+      localStorage.removeItem('token');
+      document.location.href = origin+'/login';
+    }
+    function getConductExam() {
+      document.location.href = origin+'/conduct_exam';
+    }
+
+    function getExam() {
+      document.location.href = origin+'/exam';
+    }
+
+    function getResponse() {
+      document.location.href = origin+'/response';
+    }
+    async function getUserName() {
+      let token = localStorage.getItem('token');
+      // console.log(token);
+      const response = await fetch(origin+'/api/profile',{
+        method:'POST',
+        headers:{
+          Authorization: 'Bearer'+' '+token
+        },
+      })
+
+      if (response.ok) {
+        let user_name = await response.text();
+        document.getElementById('user-name').innerText = user_name;
+      }
+      else{
+        alert(response.statusText);
+      }
+    }
+  </script>
+</body>
+
+</html>

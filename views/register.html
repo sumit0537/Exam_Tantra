@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title>
+    <style type="text/css">
+      a {
+        text-decoration: none;
+        font-family: sans-serif;
+        color: darkcyan;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      header {
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #register-area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        width: 300px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 5px 10px 20px 10px grey;
+        font-family: sans-serif;
+      }
+      #register-title {
+        font-family: monospace;
+        font-weight: bold;
+        font-size: 28px;
+        color: darkcyan;
+      }
+      #email {
+        padding: 15px;
+        width: 250px;
+        background: #f1f1f1;
+        border: 2px solid darkcyan;
+      }
+      #password {
+        margin-top: 25px;
+        padding: 15px;
+        width: 250px;
+        background-color: #f1f1f1;
+        border: 2px solid darkcyan;
+      }
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+      #bottom-register {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 300px;
+        margin-top: 25px;
+        margin-bottom: 15px;
+      }
+      #sign-up-btn {
+        padding: 11px;
+        margin-right: 10px;
+        background-color: darkcyan;
+        color: aliceblue;
+        border-radius: 50px;
+        border: none;
+        font-weight: bold;
+      }
+      #sign-up-btn:hover {
+        background-color: cyan;
+      }
+      #user-name {
+        margin-bottom: 25px;
+        padding: 15px;
+        width: 250px;
+        background: #f1f1f1;
+        border: 2px solid darkcyan;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <center id="examiner">Conducted by EXAM-TANTRA</center>
+    </header>
+    <main>
+      <center id="register-area">
+        <h3 id="register-title">Sign Up</h3>
+        <input
+          type="text"
+          id="user-name"
+          placeholder="Enter User name"
+          required
+        />
+        <input
+          type="text"
+          id="email"
+          placeholder="Enter your email id"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="Choose your password"
+          required
+        />
+        <div id="bottom-register">
+          <a href="login.html">already have an account ?</a>
+          <button id="sign-up-btn" onclick="register()" type="button">
+            Sign Up
+          </button>
+        </div>
+      </center>
+    </main>
+    <script type="text/javascript">
+	// To validate input fields
+      function isEmtpty(email, password, username) {
+        if (email && password && username) {
+          return false;
+        }
+        return true;
+      }
+	//   To check whether username is already taken or not.
+      async function isUnique(username,email,password) {
+        const origin = document.location.origin;
+        const url = origin + "/api/user/" + username;
+        const response = await fetch(url);
+        if (response.ok) {
+          if(response.text=='not exists') {
+			  return true;
+		  }
+		  else{
+			return false;
+		  }
+        }
+		return false;	 
+      }
+
+      async function register() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let username = document.getElementById("user-name").value;
+        if (isEmtpty(email, password, username)) {
+          alert("Please fil username , email and password");
+        } else if (isUnique(username)) {
+			// do register and redirect to login page
+			const origin = document.location.origin;
+			const response = await fetch(origin+'/api/register',{
+				method:'POST',
+				headers:{'Content-Type': 'application/json;charset=utf-8'},
+				body:JSON.stringify({
+					username:username,
+					email:email,
+					password:password
+				})
+			})
+			if (response.ok) {
+				document.location.href = origin+'/login';
+			}
+		}
+		else{
+			alert("username alread taken");
+		}
+      }
+    </script>
+  </body>
+</html>

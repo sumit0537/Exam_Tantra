@@ -1,0 +1,256 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  text-transform: capitalize;
+  color: white;
+}
+
+.btn {
+  width: 9%;
+  border: 1px solid black;
+  text-transform: capitalize;
+  color: white;
+}
+
+.btn-clear {
+  margin-right: 40rem;
+  color: black;
+}
+
+.btn-conducting {
+  width: 150px;
+  height: 40px;
+  background-color: darkcyan;
+}
+
+.btn-exam {
+  width: 150px;
+  height: 40px;
+  margin: 0 1rem;
+  background-color: darkcyan;
+}
+
+.btn-response {
+  width: 150px;
+  height: 40px;
+  background-color: darkcyan;
+}
+
+.btn-finish {
+  background-color: red;
+}
+
+.btn-previous {
+  background-color: #185ADB;
+}
+.btn-login{
+  width: 50px;
+  border-style: none;
+}
+.btn-next {
+  margin-left: 30px;
+  background-color: #185ADB;
+}
+
+#code {
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid darkcyan;
+}
+
+.copyright {
+  background-color: rgba(0, 0, 1, 0.8);
+  height: 101px;
+  color: white;
+}
+
+#copy-right-text {
+  padding: 45px 0 0 500px;
+  margin: 0;
+}
+
+.dashboard {
+  height: 485px;
+  background-color: #fff;
+
+}
+
+.dashboard-btn {
+padding: 75px 0 0 350px;
+}
+
+.dashboard-logo {
+padding: 150px 0 0 480px;
+}
+
+#exam-code {
+  border-radius: 5px;
+  border: 2px solid darkcyan;
+  box-shadow: 5px 5px 5px grey;
+  width: 30vw;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: darkcyan;
+  font-family: sans-serif;
+  margin: auto;
+}
+
+.instruction {
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.hide {
+  display: none;
+}
+
+.home-page{
+  height: 451px;
+
+}
+#home-page-text{
+  font-family: ubantu;
+  color: darkcyan;
+  font-weight: bold;
+  padding: 170px 0 0 400px;
+  text-decoration: underline;
+}
+.login {
+  padding: 0 30px;
+
+}
+
+#submit-btn {
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  color: white;
+  background-color: darkcyan;
+  margin-top: 20px;
+}
+
+.nav-bar {
+  background-color: darkcyan;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  background-color: darkcyan;
+  display: flex;
+  flex-direction: row;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.list-item {
+  margin: 1.8rem 0;
+}
+
+.logo {
+  padding: 0 30px;
+  font-family: ubantu;
+}
+
+.logo-text {
+  font-family: ubantu;
+  color: darkcyan;
+}
+
+.logout {
+  margin: 0 30px;
+}
+
+.logout-btn {
+  background-color: red;
+  color: #fff;
+  padding: 0 13px;
+  border: 1px solid black;
+}
+
+.main-content {
+  border: 2px solid black;
+}
+
+.name {
+  text-transform: capitalize;
+  padding-top: 8px;
+}
+
+.option {
+  list-style-type: none;
+}
+
+.option-bar {
+  height: 19rem;
+  padding-top: 1rem;
+}
+
+#question {
+  padding: 15px 0 0 30px;
+}
+
+.question-bar {
+  min-height: 4rem;
+  background-color: #FAF1E6;
+  margin: 3px 3px;
+}
+.response-page{
+  height: 451px;
+}
+.response-table{
+padding: 195px 0 0 350px;
+}
+.right {
+  background-color: darkcyan;
+  display: flex;
+  flex-direction: row;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.second-nav-bar {
+  background-color: #185ADB;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.student-name {
+  font-family: 'ubantu', sans-serif;
+}
+table, th, td {
+  border: 1px solid black;
+
+}
+table{
+  width: 50%;
+  border-collapse: collapse;
+}
+.timmer {
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+}

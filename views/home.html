@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  <style type="text/css">
+    body{
+      margin:0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .space-bar{
+      width: 50vw;
+      height: 10vh;
+    }
+    #nav-bar{
+      height: 10vh;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: darkcyan;
+    }
+    button{
+      font-size: 18px;
+      padding: 10px;
+      font-family: sans-serif;
+      width: 10vw;
+    }
+    #login-btn{
+      margin-right: 20px;
+      background-color: transparent;
+      color: white;
+      text-transform: uppercase;
+      border: 2px solid white;
+    }
+    #login-btn:active{
+      border: 4px solid red;
+      
+    }
+    #register-btn{
+      background-color: orangered;
+      color: white;
+      text-transform: uppercase;
+    }
+    #logo{
+      margin-left: 20px;
+    }
+    main{
+      height: 80vh;
+    }
+    h1{
+      margin: 0;
+    }
+    footer{
+      height: 10vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      color: white;
+    }
+    h3{
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  
+    <div id="nav-bar">
+      <div id="logo">Exam-Tantra</div>
+      <div class="space-bar"></div>
+      <button id="register-btn" onclick="register()">register</button>
+      <button id="login-btn" onclick="login()">login</button>
+    </div>
+
+  <main>
+    <h1>Main Body</h1>
+  </main>
+  <footer><h3>Copyright 2021 Exam-Tantra</h3></footer>
+
+  <script type="text/javascript">
+
+    function register() {
+      let origin = document.location.origin;
+      document.location.href = origin+'/register';
+    }
+
+    function login() {
+      let origin = document.location.origin;
+      document.location.href = origin+'/login';
+    }
+  </script>
+</body>
+
+</html>

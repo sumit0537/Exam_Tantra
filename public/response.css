@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+  background-color: blue;
+}
+.logo{
+  color: aliceblue;
+  font-size: larger;
+  font-family: sans-serif;
+}
+#home{
+  color: white;
+  text-transform: uppercase;
+  font-size: large;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  text-decoration: underline;
+}
+.logout-btn{
+  background-color: red;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: sans-serif;
+  color: rgb(255, 255, 255);
+  text-transform: capitalize;
+}
+table,
+th,
+td {
+  border: 2px solid rgb(25, 5, 206);
+  border-collapse: collapse;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 22px;
+}
+#head-row {
+  color: blue;
+  text-transform: capitalize;
+}
+.response-page {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: beige;
+}
+.footer {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+  font-size: 18px;
+}

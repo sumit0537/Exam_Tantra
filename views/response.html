@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>response</title>
+    <link rel="stylesheet" type="text/css" href="../public/response.css" />
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="logo">
+        <h2>Exam tantra</h2>
+      </div>
+      
+      <button id="home" type="button" onclick="goToHome()">home</button>
+
+      <div class="space-bar"></div>
+      <div class="space-bar"></div>
+      <div class="logout">
+        <button type="button" class="logout-btn" onclick="LogOut()">logout</button>
+      </div>
+    </div>
+
+    <div class="response-page">
+      <table id="myTable">
+        <tr id="head-row">
+          <th>sno.</th>
+          <th>code</th>
+          <th>title</th>
+          <th>submitted_by</th>
+          <th>correct</th>
+          <th>incorrect</th>
+          <th>not attemped</th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="footer">
+      <p id="copy-right-text">Copyright By Exam-Tantra</p>
+    </div>
+    <script src="../public/response.js"></script>
+  </body>
+</html>

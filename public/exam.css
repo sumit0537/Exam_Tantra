@@ -1,0 +1,142 @@
+body{
+    margin: 0;
+    padding:0;
+  }
+  #exam-body{
+    margin: 0;
+    padding: 0;
+  }
+  .hide{
+    display: none;
+  }
+  .header{
+    height: 25vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: lightgreen;
+    font-family: sans-serif;
+  }
+  h2{
+    margin: 0px 0px 5px 0px;
+    padding: 0;
+  }
+  .header-right{
+    font-size: 22px;
+  }
+  .header-left{
+    font-size: 22px;
+  }
+  .main-content{
+    height: 60vh;
+  }
+  .question-bar{
+    height: 10vh;
+    background-color: darkturquoise;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  #question-number{
+    margin-left: 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+  }
+  .option-bar{
+    height: 50vh;
+    display: flex;
+    align-items: center;
+  }
+  .option{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0px 0px 0px 20px;
+    padding: 0;
+  }
+  .list-item{
+    margin: 5px;
+    padding: 10px;
+  }
+  .label-option{
+    margin-left: 5px;
+    padding-left: 5px;
+    font-size: 25px;
+  }
+  .button-bar{
+    height: 15vh;
+    background-color: wheat;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .space-bar{
+    width: 150px;
+  }
+  button{
+    width: 150px;
+    height: 50px;
+    font-size: 21px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    box-shadow: 2px 2px grey;
+  }
+  button:active{
+    box-shadow: 1px 1px 2px 2px darkmagenta;
+  }
+  #prev-btn{
+    background-color: blue;
+    border: none;
+    color: white;
+  }
+  #next-btn{
+    background-color: green;
+    border: none;
+    color: white;
+  }
+  #clear-btn{
+    background-color: transparent;
+    border: 2px solid darkmagenta;
+    color: darkmagenta;
+  }
+  #finish-btn{
+    background-color: red;
+    border: none;
+    color: white;
+  }
+  #code-input{
+    height: 50vh;
+    margin: auto;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid darkcyan;
+    border-radius: 30px;
+    box-shadow: 3px 3px grey;
+    position: relative;
+    top: 75px;
+  }
+  h3{
+    font-family: sans-serif;
+    font-size: 25px;
+    color: darkcyan;
+  }
+  #code{
+    padding: 10px;
+    border: 2px solid darkcyan;
+  }
+  #code:focus{
+    outline: none;
+  }
+  #submit-btn{
+    padding: 10px;
+    background-color: darkcyan;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 150px;
+  }
+  

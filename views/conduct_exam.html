@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Conduct Exam</title>
+    <link rel="stylesheet" href="../public/conduct_exam.css" />
+  </head>
+  <body>
+    <header>
+      <nav id="instructions-bar">
+        <label> Exam title : </label
+        ><input type="text" id="exam-title" placeholder="Physics" />
+        <label>Exam duration(in minutes) : </label
+        ><input type="text" id="duration" placeholder="30" />
+        <div></div>
+        <label> Start time : </label
+        ><input type="time" id="start" value="13:30:00" step="1" />
+      </nav>
+    </header>
+    <!-- instruction header ends -->
+    <main>
+      <input type="text" placeholder="Insert a question" id="question-bar" />
+
+      <div class="options-bar">
+        <div class="option-name">A</div>
+        <input type="text" placeholder="Insert option-1" class="options" />
+      </div>
+
+      <div class="options-bar">
+        <div class="option-name">B</div>
+        <input type="text" placeholder="Insert option-2" class="options" />
+      </div>
+
+      <div class="options-bar">
+        <div class="option-name">C</div>
+        <input type="text" placeholder="Insert option-3" class="options" />
+      </div>
+
+      <div class="options-bar">
+        <div class="option-name">D</div>
+        <input type="text" placeholder="Insert option-4" class="options" />
+      </div>
+
+      <input type="text" placeholder="Enter Correct Option" id="answer" />
+    </main>
+    <div id="footer">
+      <button id="insert-btn" onclick="insertQues()">Insert</button>
+      <button id="submit-btn" onclick="submitQues()">Submit</button>
+    </div>
+
+    <script type="text/javascript">
+      var questions = [];
+      var answers = [];
+      function saveQues(questionName, options,ans) {
+        let q = {
+          name: questionName,
+          option_1: options[0].value,
+          option_2: options[1].value,
+          option_3: options[2].value,
+          option_4: options[3].value,
+        };
+        questions.push(q);
+        answers.push(ans);
+      }
+      function insertQues() {
+        let question = document.getElementById("question-bar");
+        let options = document.getElementsByClassName("options");
+        let answer = document.getElementById("answer");
+        if (question.value && answer.value) {
+          // saving the question and its answer
+          saveQues(question.value, options,answer.value);
+          // update the question-input and options input
+          question.value = "";
+          options[0].value = "";
+          options[1].value = "";
+          options[2].value = "";
+          options[3].value = "";
+          answer.value = "";
+        } else {
+          alert(" :)  Question and answer can't be empty ");
+        }
+      }
+      async function submitQues() {
+        let question = document.getElementById("question-bar");
+        let options = document.getElementsByClassName("options");
+        let answer = document.getElementById("answer");
+        saveQues(question.value,options,answer.value);
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = ["January","February","March","April","May","June","July","August","September","November","December"];
+        month = month.filter((m,i)=>i==date.getMonth());
+        let day = date.getDate();
+        let time = document.getElementById("start").value;
+        let duration = document.getElementById("duration").value;
+        let schedule_time = month[0] + " " + day + ", " + year + " " + time;
+        let title = document.getElementById("exam-title").value;
+        console.log(`${duration} ${title} ${schedule_time}`);
+        console.log(questions);
+        console.log(answers);
+        
+        if (duration && schedule_time && title) {
+          // post question along with instructions
+          const origin = document.location.origin;
+          const token = localStorage.getItem("token");
+          const response = await fetch(origin + "/api/conduct_exam", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json;charset=utf-8",
+              Authorization: "Bearer" + " " + token,
+            },
+            body: JSON.stringify({
+              correct_answer: answers,
+              duration: duration,
+              questions: questions,
+              schedule_time: schedule_time,
+              title: title,
+            }),
+          });
+          if (response.ok) {
+            let exam_code = await response.text();
+            alert("Your exam_code is : " + exam_code);
+            document.location.href = origin+'/dashboard';
+          } else {
+            let exam_code = await response.text();
+            alert("Something went wrong\n" + exam_code);
+          }
+        } 
+        else {
+          alert("  :) duration and starting time can't be empty ");
+        }
+      
+      }
+    </script>
+  </body>
+</html>
